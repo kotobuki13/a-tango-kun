@@ -5,7 +5,7 @@ class Index
     public function run()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') { // POSTされたか判断
-            return $this->getMean($_POST['word']);
+            $_SESSION['mean'] = $this->getMean($_POST['word']);
         }
     }
     
@@ -17,8 +17,12 @@ class Index
     
         $doc = phpQuery::newDocument($html);
     
-        $title = $doc->find('.content-explanation')->text();
+        $mean = $doc->find('.content-explanation')->text();
     
-        return $title;
+        if (!($mean === '')) {
+            return '意味: ' . $mean;
+        } else {
+            return "単語の意味が見つかりませんでした。";
+        }
     }
 }

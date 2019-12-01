@@ -1,0 +1,12 @@
+body {
+  text-align :center;
+}
+
+input {
+  font-size: 100%;
+}
+
+p {
+  margin: 40px;
+  font-size: 20px;
+}
